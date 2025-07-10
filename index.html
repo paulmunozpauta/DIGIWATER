@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paul Muñoz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Navigation will be inserted here -->
+<div id="nav-placeholder"></div>
+
+
+
+
+<!-- About Section -->
+<section id="about" class="section">
+    <p>
+        👋DIGIWATER.
+    </p>
+
+
+
+
+<!-- Footer will be inserted here -->
+<div id="footer-placeholder"></div>
+
+<script>
+    fetch('components.html')
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById("nav-placeholder").innerHTML = 
+                new DOMParser().parseFromString(data, "text/html")
+                .getElementById("shared-nav").innerHTML;
+
+            document.getElementById("footer-placeholder").innerHTML = 
+                new DOMParser().parseFromString(data, "text/html")
+                .getElementById("shared-footer").innerHTML;
+        });
+</script>
+
+</body>
+</html>

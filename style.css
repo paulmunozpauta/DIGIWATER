@@ -1,0 +1,237 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Header Section */
+header {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header p {
+    margin: 5px 0 15px;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    padding: 50px 0; /* Vertical padding to maintain section height */
+    background: url('images/background.jpg') no-repeat center center / cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Hero Content Styling */
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.profile-pic {
+    width: 200px; /* Adjust size as needed */
+    height: auto;
+    border-radius: 50%; /* Circular image */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow for visual effect */
+    margin-bottom: 15px; /* Space below image */
+}
+
+.hero h1 {
+    font-size: 2.5em; /* Adjust heading size */
+    margin: 0;
+    color: white;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); /* Slight shadow for readability */
+}
+/* Description and Social Links Box */
+.description-icons-box {
+    background: rgba(50, 50, 50, 0.7); /* Semi-transparent gray */
+    padding: 10px 20px;
+    border-radius: 8px;
+    margin: 10px auto; /* Centers and adds spacing */
+    display: inline-block; /* Shrink box to content */
+    text-align: center;
+}
+
+.description-text {
+    color: white;
+    margin: 0 0 10px 0; /* Add small spacing below text */
+    font-size: 1em;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Space between icons */
+}
+
+.social-links a {
+    transition: transform 0.3s ease;
+}
+
+.social-links a:hover {
+    transform: scale(1.1);
+}
+
+.social-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+/* Navigation Section */
+nav {
+    background: #444;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Main Section */
+main {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+main h2 {
+    color: #0073e6;
+}
+
+main ul {
+    padding-left: 20px;
+}
+
+/* Publications Section */
+#publications ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+#publications li {
+    margin-bottom: 15px; /* Space between items */
+    line-height: 1.5; /* Improves readability */
+}
+
+#publications a {
+    color: #0073e6;
+    text-decoration: none;
+}
+
+#publications a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    background: #444;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+}
+/* General Section Styling */
+.section {
+    margin: 40px auto;
+    padding: 20px;
+    max-width: 800px;
+}
+
+/* Centered Section Titles */
+.section-title {
+    font-size: 2em;
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Unordered List Styling */
+ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+/* Link Styling */
+a {
+    color: #0073e6;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #005bb5;
+}
+/* Education Section Styling */
+.education-list {
+    list-style-type: none; /* Removes default bullet points */
+    padding: 0;
+    margin: 0 auto;
+    max-width: 800px; /* Controls width for better readability */
+}
+
+.education-list li {
+    margin-bottom: 20px; /* Adds space between education items */
+    line-height: 1.6; /* Improves readability */
+}
+
+.education-list strong {
+    font-size: 1.1em; /* Slightly larger font for dates */
+    color: #333; /* Dark gray for emphasis */
+}
+
+.education-list em {
+    color: #555; /* Slightly lighter gray for university names */
+    display: block; /* Moves university names to a new line */
+    font-style: italic;
+}
+
+.project-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.project-logo {
+    width: 200px;
+    height: auto;
+    flex-shrink: 0;
+    margin-top: 5px;
+}

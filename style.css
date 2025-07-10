@@ -23,28 +23,26 @@ header p {
 }
 
 /* Hero Section */
+
 .hero {
-    position: relative;
-    padding: 50px 0; /* Vertical padding to maintain section height */
-    background: url('images/background.jpg') no-repeat center center / cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+  background-image: url("images/background_image.jpg");  /* adjust path if needed */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;  /* full screen height */
+  position: relative;
 }
 
-/* Hero Content Styling */
-.hero-content {
-    position: relative;
-    z-index: 2;
-}
-
-.profile-pic {
-    width: 200px; /* Adjust size as needed */
-    height: auto;
-    border-radius: 50%; /* Circular image */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow for visual effect */
-    margin-bottom: 15px; /* Space below image */
+.text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 80px;          /* larger text */
+  font-weight: 900;         /* extra bold */
+  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);  /* stronger shadow */
+  letter-spacing: 2px;
 }
 
 .hero h1 {

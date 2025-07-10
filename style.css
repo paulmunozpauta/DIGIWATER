@@ -28,9 +28,11 @@ header p {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100vh;  /* full screen height */
+  height: 50vh;  /* full screen height */
   position: relative;
 }
+
+
 
 .text-overlay {
   position: absolute;

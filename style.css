@@ -119,33 +119,30 @@ footer p {
 .team-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
-  justify-content: flex-start;
-  margin-top: 20px;
+  gap: 20px;
+  justify-content: space-between;
 }
 
 .team-member {
-  flex: 0 0 calc(50% - 30px);
+  flex: 0 0 48%; /* two per row with space between */
   background: #f9f9f9;
-  border-radius: 8px;
   padding: 15px;
+  border-radius: 8px;
   text-align: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .profile-pic {
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
+  width: 100%;
+  max-width: 200px;
   border-radius: 50%;
   margin-bottom: 10px;
 }
 
 .university-logo {
   width: 100px;
-  height: auto;
   margin-top: 10px;
 }
+
 
 
 /* Links */
@@ -198,5 +195,11 @@ ul li {
     font-size: 22px;
     max-width: 90%;
     padding: 0 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .team-member {
+    flex: 0 0 100%;
   }
 }

@@ -18,41 +18,42 @@
 
 <section class="section">
   <h2 class="section-title">About DIGIWATER</h2>
-  <p>
+  <p style="text-align: justify;">
     During a meeting in March 2025 at VUB with the coordinators of the Strategic Institutional Partnerships (SIP) with the University of the Western Cape (UWC), South Africa – Leo Van Audenhove, and Universidad Central de Las Villas (UCLV), Cuba – Lucas Melgaço, along with UCLV’s rector Luis Barranco, a shared interest in strengthening interdisciplinary collaborations on water challenges was identified. DIGIWATER responds to that vision, using the International Scientific Symposium CCI2025, hosted by UCLV in October 2025, as a launchpad for joint action.
   </p>
-  <p>
+  <p style="text-align: justify;">
     DIGIWATER expands the SIP framework and connects VUB to five additional strategic partners—Universidad de Cuenca (UCUENCA, Ecuador), Universidad Católica Boliviana (UCB), Universidade de São Paulo (USP), Pontificia Universidad Católica del Perú (PUCP), and Universidad de los Andes (UNIANDES, Colombia)—through two interdisciplinary workshops:
   </p>
-  <ul>
+  <ul style="text-align: justify;">
     <li><strong>Water Resilience through Citizen Science</strong>, focused on inclusive governance and water justice</li>
     <li><strong>Water Resilience through Digitisation</strong>, exploring IoT, AI, and data tools for water applications</li>
   </ul>
-  <p>
+  <p style="text-align: justify;">
     In addition, two training courses targeting Cuban early career scientists and staff will focus on SWAT modelling and Digitisation and AI for water applications. These activities promote knowledge exchange, research decolonisation, and collaborative research to build resilient water futures in the Global South through digital tools and citizen engagement—key priorities in the VLIR-UOS country reference frameworks for Cuba, Bolivia, Ecuador, and Peru.
   </p>
-  <p>
+  <p style="text-align: justify;">
     DIGIWATER also aligns with the UNESCO Intergovernmental Hydrological Programme (IHP) and the Chair on Open Water Science and Education, hosted at VUB and chaired by Prof. Ann Van Griensven, which promotes open science through open data, IoT, and online education. A short video will document highlights from the activities. All outputs will be shared via the project website and VUB channels to boost VUB visibility.
   </p>
 </section>
 
 
-    <!-- Footer will be inserted here -->
-    <div id="footer-placeholder"></div>
 
-    <script>
-        fetch('components.html')
-            .then(res => res.text())
-            .then(data => {
-                document.getElementById("nav-placeholder").innerHTML = 
-                    new DOMParser().parseFromString(data, "text/html")
-                    .getElementById("shared-nav").innerHTML;
+<!-- Footer will be inserted here -->
+<div id="footer-placeholder"></div>
 
-                document.getElementById("footer-placeholder").innerHTML = 
-                    new DOMParser().parseFromString(data, "text/html")
-                    .getElementById("shared-footer").innerHTML;
-            });
-    </script>
+<script>
+    fetch('components.html')
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById("nav-placeholder").innerHTML = 
+                new DOMParser().parseFromString(data, "text/html")
+                .getElementById("shared-nav").innerHTML;
+
+            document.getElementById("footer-placeholder").innerHTML = 
+                new DOMParser().parseFromString(data, "text/html")
+                .getElementById("shared-footer").innerHTML;
+        });
+</script>
 
 </body>
 </html>

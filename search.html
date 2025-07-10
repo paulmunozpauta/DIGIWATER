@@ -1,0 +1,256 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<!-- Page Title -->
+<h2>Explore the database</h2>
+
+<!-- Main Search Option Buttons -->
+<div class="search-buttons">
+    <button type="button" class="btn btn-primary btn-block mb-3" onclick="showSection('impactSearch')">Search by Impact</button>
+    <button type="button" class="btn btn-primary btn-block mb-3" onclick="showSection('locationSearch')">Search by Location</button>
+    <button type="button" class="btn btn-primary btn-block mb-3" onclick="showSection('customSearch')">Customized Search</button>
+</div>
+
+<!-- Search Form Sections (Initially Hidden) -->
+<!-- Search by Impact Section -->
+<div id="impactSearch" class="search-section" style="display: none;">
+    <h3>Search by Impact</h3>
+    <form action="{{ url_for('search') }}" method="post">
+
+        <!-- All Impacts Option -->
+        <div class="form-group">
+            <input type="checkbox" id="all_impacts" name="impact" value="all" onchange="toggleAllImpacts(this)">
+            <label for="all_impacts"><em>All Impacts</em></label>
+        </div>
+
+<!-- Impact Checklist with Refine by Range Options -->
+<div class="form-group" id="individual_impacts">
+    <label>Select Impacts:</label>
+    <div>
+        <!-- Map for Displaying Human-Friendly Names -->
+        {% set impact_display_map = {
+            'Total_Deaths': 'Deaths',
+            'Total_Injuries': 'Injuries',
+            'Total_Displacement': 'Displacement',
+            'Total_Homelessness': 'Homelessness',
+            'Total_Insured_Damage': 'Insured Damage',
+            'Total_Damage': 'Damage',
+            'Total_Buildings_Damage': 'Buildings Damaged'
+        } %}
+
+        <!-- Loop Through Impacts -->
+        {% for impact, display_name in impact_display_map.items() %}
+            <div class="form-check d-flex align-items-center mb-3">
+                <!-- Impact Checkbox -->
+                <input type="checkbox" class="form-check-input impact-checkbox" 
+                       id="{{ impact | lower | replace(' ', '_') }}" 
+                       name="impact" 
+                       value="{{ impact }}" 
+                       onchange="toggleIndividualImpact(this)">
+                <label class="form-check-label mr-3" 
+                       for="{{ impact | lower | replace(' ', '_') }}">{{ display_name }}</label>
+
+                <!-- Refine by Range Checkbox and Inputs -->
+                <div id="{{ impact | lower | replace(' ', '_') }}_options" 
+                     class="ml-3" 
+                     style="display: none; align-items: center;">
+                    <!-- Refine by Range Checkbox -->
+                    <input type="checkbox" class="form-check-input" 
+                           id="{{ impact | lower | replace(' ', '_') }}_use_range" 
+                           name="{{ impact }}_use_range" 
+                           onchange="toggleImpactRangeInputs('{{ impact | lower | replace(' ', '_') }}')">
+                    <label class="form-check-label ml-2" 
+                           for="{{ impact | lower | replace(' ', '_') }}_use_range">Refine by range</label>
+                    
+                    <!-- Min/Max Inputs -->
+                    <div id="{{ impact | lower | replace(' ', '_') }}_range_inputs" 
+                         class="ml-3 mt-2" 
+                         style="display: none;">
+                        <input type="number" class="form-control d-inline" 
+                               style="width: 80px;" 
+                               name="{{ impact }}_Min" 
+                               placeholder="Min" 
+                               min="0">
+                        <input type="number" class="form-control d-inline ml-2" 
+                               style="width: 80px;" 
+                               name="{{ impact }}_Max" 
+                               placeholder="Max" 
+                               min="0">
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+        <!-- Search Button -->
+        <button type="submit" class="btn btn-primary mt-3">Search</button>
+    </form>
+</div>
+
+
+
+<!-- Search by Location Section -->
+<div id="locationSearch" class="search-section" style="display: none;">
+    <h3>Search by Location</h3>
+    <form action="{{ url_for('search_by_location') }}" method="post">
+        <!-- Country Dropdown -->
+        <div class="form-group">
+            <label for="country">Country:</label>
+            <select name="country" id="country" class="form-control">
+                <option value="">All Countries</option>
+                {% for country in countries %}
+                <option value="{{ country }}">{{ country }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Event Type Dropdown -->
+        <div class="form-group">
+            <label for="event_type">Event Type:</label>
+            <select name="event_type" id="event_type" class="form-control">
+                <option value="all">All Event Types</option>
+                {% for event in events %}
+                <option value="{{ event }}">{{ event }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Search Button -->
+        <button type="submit" class="btn btn-primary mt-3">Search</button>
+    </form>
+</div>
+
+<!-- Customized Search Section -->
+<div id="customSearch" class="search-section" style="display: none;">
+    <h3>Customized Search</h3>
+    <form action="{{ url_for('search') }}" method="post">
+        <!-- Country Dropdown with Search Functionality -->
+        <div class="form-group">
+            <label for="country">Country:</label>
+            <select name="country" id="country" class="form-control">
+                <option value="">All countries</option>
+                {% for country in countries %}
+                    <option value="{{ country }}">{{ country }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Event Type Dropdown -->
+        <div class="form-group">
+            <label for="event_type">Event Type:</label>
+            <select name="event_type" id="event_type" class="form-control">
+                <option value="all">All Event Types</option>
+                {% for event in events %}
+                    <option value="{{ event }}">{{ event }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Impact Type Field -->
+        <div class="form-group">
+            <label for="impact">Impact:</label>
+            <select name="impact" id="impact" class="form-control">
+                <option value="Total_Deaths">Total Deaths</option>
+                <option value="Total_Injuries">Total Injuries</option>
+                <option value="Total_Displacement">Total Displacement</option>
+                <option value="Total_Homelessness">Total Homelessness</option>
+                <option value="Total_Insured_Damage">Total Insured Damage</option>
+                <option value="Total_Damage">Total Damage</option>
+                <option value="Total_Buildings_Damage">Total Buildings Damage</option>
+            </select>
+        </div>
+        
+        <!-- Events Since Year Field -->
+        <div class="form-group">
+            <label for="since_year">Events Since Year:</label>
+            <input type="number" name="since_year" id="since_year" class="form-control" placeholder="Enter year">
+        </div>
+
+        <!-- Search Button -->
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+</div>
+
+<!-- Include Select2 CSS and JavaScript -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+<!-- Initialize Select2 on the Country Dropdown -->
+<script>
+    $(document).ready(function() {
+        $('#country').select2({
+            placeholder: "Type to search a country",
+            allowClear: true
+        });
+    });
+
+    // Function to show the relevant search section based on the button clicked
+    function showSection(sectionId) {
+        // Hide all search sections
+        $('.search-section').hide();
+        // Show the selected section
+        $('#' + sectionId).show();
+    }
+</script>
+
+
+<!-- JavaScript for Impact Selection Logic -->
+<script>
+    function toggleAllImpacts(allImpactsCheckbox) {
+        const individualImpacts = document.querySelectorAll('.impact-checkbox');
+        const allOptions = document.querySelectorAll('.impact-checkbox, .form-check-input');
+
+        if (allImpactsCheckbox.checked) {
+            individualImpacts.forEach(cb => {
+                cb.checked = false;
+                toggleIndividualImpact(cb); // Hide refine options
+            });
+            allOptions.forEach(opt => opt.disabled = true);
+            allImpactsCheckbox.disabled = false; // Keep All Impacts enabled
+        } else {
+            allOptions.forEach(opt => opt.disabled = false);
+        }
+    }
+
+    function toggleIndividualImpact(individualCheckbox) {
+        const optionsDiv = document.getElementById(`${individualCheckbox.id}_options`);
+
+        if (individualCheckbox.checked) {
+            optionsDiv.style.display = 'flex';
+        } else {
+            optionsDiv.style.display = 'none';
+            const rangeCheckbox = optionsDiv.querySelector(`#${individualCheckbox.id}_use_range`);
+            const rangeInputs = optionsDiv.querySelector(`#${individualCheckbox.id}_range_inputs`);
+
+            rangeCheckbox.checked = false; // Uncheck refine by range
+            rangeInputs.style.display = 'none'; // Hide range inputs
+        }
+    }
+
+    function toggleImpactRangeInputs(impactId) {
+        const rangeInputsDiv = document.getElementById(`${impactId}_range_inputs`);
+        const rangeCheckbox = document.getElementById(`${impactId}_use_range`);
+
+        if (rangeCheckbox.checked) {
+            rangeInputsDiv.style.display = 'flex';
+        } else {
+            rangeInputsDiv.style.display = 'none';
+        }
+    }
+
+    // Ensure initial state on page load
+    document.addEventListener('DOMContentLoaded', function () {
+        const allImpactsCheckbox = document.getElementById('all_impacts');
+        const individualCheckboxes = document.querySelectorAll('.impact-checkbox');
+
+        if (allImpactsCheckbox.checked) {
+            toggleAllImpacts(allImpactsCheckbox);
+        } else {
+            individualCheckboxes.forEach(toggleIndividualImpact);
+        }
+    });
+</script>
+{% endblock %}

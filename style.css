@@ -1,94 +1,52 @@
+/* Global Styles */
 body {
     font-family: Arial, sans-serif;
-    line-height: 1.6;
     margin: 0;
     padding: 0;
     color: #333;
+    line-height: 1.6;
 }
 
-/* Header Section */
-header {
-    text-align: center;
-    background-color: #333;
-    color: white;
-    padding: 20px 0;
-}
-
-header h1 {
-    margin: 0;
-}
-
-header p {
-    margin: 5px 0 15px;
-}
-
-/* Hero Section */
-.hero {
-  background-image: url("images/background.jpg");  /* adjust path if needed */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 50vh;  /* full screen height */
-  position: relative;
-}
-
-
-
-.text-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  font-size: 80px;          /* larger text */
-  font-weight: 900;         /* extra bold */
-  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);  /* stronger shadow */
-  letter-spacing: 2px;
-}
-
-.hero h1 {
-    font-size: 2.5em; /* Adjust heading size */
-    margin: 0;
-    color: white;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); /* Slight shadow for readability */
-}
-/* Description and Social Links Box */
-.description-icons-box {
-    background: rgba(50, 50, 50, 0.7); /* Semi-transparent gray */
-    padding: 10px 20px;
-    border-radius: 8px;
-    margin: 10px auto; /* Centers and adds spacing */
-    display: inline-block; /* Shrink box to content */
-    text-align: center;
-}
-
-.description-text {
-    color: white;
-    margin: 0 0 10px 0; /* Add small spacing below text */
-    font-size: 1em;
-}
-
-.social-links {
+/* Hero/Banner Section */
+.image-banner {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
     display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 15px; /* Space between icons */
 }
 
-.social-links a {
-    transition: transform 0.3s ease;
+.hero-fullscreen {
+    height: 100vh;
 }
 
-.social-links a:hover {
-    transform: scale(1.1);
+.hero-small {
+    height: 20vh;
 }
 
-.social-icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+/* Text overlay for all banners */
+.text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 80px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
 }
-/* Navigation Section */
+
+/* Smaller overlay text for subpages (optional) */
+.hero-small .text-overlay {
+    font-size: 48px;
+    font-weight: 700;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+/* Navigation Bar */
 nav {
     background: #444;
     color: white;
@@ -112,7 +70,7 @@ nav ul li a {
     text-decoration: none;
 }
 
-/* Main Section */
+/* Main Content */
 main {
     padding: 20px;
     max-width: 800px;
@@ -126,30 +84,21 @@ main h2 {
     color: #0073e6;
 }
 
-main ul {
-    padding-left: 20px;
+/* Sections */
+.section {
+    margin: 40px auto;
+    padding: 20px;
+    max-width: 800px;
 }
 
-/* Publications Section */
-#publications ul {
-    list-style-type: disc;
-    padding-left: 20px;
+.section-title {
+    font-size: 2em;
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
 }
 
-#publications li {
-    margin-bottom: 15px; /* Space between items */
-    line-height: 1.5; /* Improves readability */
-}
-
-#publications a {
-    color: #0073e6;
-    text-decoration: none;
-}
-
-#publications a:hover {
-    text-decoration: underline;
-}
-
+/* Footer */
 footer {
     background: #444;
     color: white;
@@ -160,34 +109,8 @@ footer {
 footer p {
     margin: 0;
 }
-/* General Section Styling */
-.section {
-    margin: 40px auto;
-    padding: 20px;
-    max-width: 800px;
-}
 
-/* Centered Section Titles */
-.section-title {
-    font-size: 2em;
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-/* Unordered List Styling */
-ul {
-    list-style-type: disc;
-    padding-left: 20px;
-    font-size: 1em;
-    line-height: 1.6;
-}
-
-ul li {
-    margin-bottom: 10px;
-}
-
-/* Link Styling */
+/* Links */
 a {
     color: #0073e6;
     text-decoration: none;
@@ -197,40 +120,37 @@ a:hover {
     text-decoration: underline;
     color: #005bb5;
 }
-/* Education Section Styling */
+
+/* Lists */
+ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    font-size: 1em;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+/* Education (if used) */
 .education-list {
-    list-style-type: none; /* Removes default bullet points */
+    list-style-type: none;
     padding: 0;
     margin: 0 auto;
-    max-width: 800px; /* Controls width for better readability */
+    max-width: 800px;
 }
 
 .education-list li {
-    margin-bottom: 20px; /* Adds space between education items */
-    line-height: 1.6; /* Improves readability */
+    margin-bottom: 20px;
 }
 
 .education-list strong {
-    font-size: 1.1em; /* Slightly larger font for dates */
-    color: #333; /* Dark gray for emphasis */
+    font-size: 1.1em;
+    color: #333;
 }
 
 .education-list em {
-    color: #555; /* Slightly lighter gray for university names */
-    display: block; /* Moves university names to a new line */
+    color: #555;
+    display: block;
     font-style: italic;
-}
-
-.project-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 15px;
-    margin-bottom: 30px;
-}
-
-.project-logo {
-    width: 200px;
-    height: auto;
-    flex-shrink: 0;
-    margin-top: 5px;
 }

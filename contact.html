@@ -41,19 +41,6 @@
     <div id="footer-placeholder"></div>
 
 
-<script>
-    fetch('components.html')
-        .then(res => res.text())
-        .then(data => {
-            document.getElementById("nav-placeholder").innerHTML = 
-                new DOMParser().parseFromString(data, "text/html")
-                .getElementById("shared-nav").innerHTML;
-
-            document.getElementById("footer-placeholder").innerHTML = 
-                new DOMParser().parseFromString(data, "text/html")
-                .getElementById("shared-footer").innerHTML;
-        });
-</script>
 
 
 

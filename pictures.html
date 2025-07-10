@@ -33,18 +33,34 @@
     <div id="footer-placeholder"></div>
 
 
-    <script>
-        fetch('components.html')
-            .then(res => res.text())
-            .then(data => {
-                document.getElementById("nav-placeholder").innerHTML = 
-                    new DOMParser().parseFromString(data, "text/html")
-                    .getElementById("shared-nav").innerHTML;
 
-                document.getElementById("footer-placeholder").innerHTML = 
-                    new DOMParser().parseFromString(data, "text/html")
-                    .getElementById("shared-footer").innerHTML;
-            });
-    </script>
+<!-- Components auto-loaded -->
+<script>
+async function loadComponents() {
+    const res = await fetch('components.html');
+    const text = await res.text();
+
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = text;
+
+    const logoBar = tempDiv.querySelector('#logo-bar');
+    if (logoBar) {
+    document.body.insertBefore(logoBar, document.body.firstChild);
+    }
+
+    const nav = tempDiv.querySelector('#shared-nav');
+    if (nav) {
+    const main = document.querySelector('main');
+    document.body.insertBefore(nav, main || document.body.firstChild);
+    }
+
+    const footer = tempDiv.querySelector('#shared-footer');
+    if (footer) {
+    document.body.appendChild(footer);
+    }
+}
+
+window.addEventListener('DOMContentLoaded', loadComponents);
+</script>
 </body>
 </html>

@@ -1,302 +1,189 @@
-{% extends "layout.html" %}
-
-{% block content %}   
-
-
-
-    <style>
-
-        /* Custom styles for disclaimer */
-        .disclaimer-section {
-            background-color: #ffe6e6; /* Light red background */
-            padding: 10px; /* Reduced padding */
-            border: 1px solid #ff4d4d; /* Red border */
-            border-radius: 5px;
-            color: #cc0000; /* Darker red text */
-            font-size: 14px; /* Smaller font size */
-        }
-    
-        .disclaimer-section h4 {
-            color: #cc0000; /* Darker red for the header */
-            font-weight: bold;
-            font-size: 16px; /* Smaller header font size */
-        }
-    
-        .disclaimer-section i {
-            color: #ff4d4d; /* Red for the icon */
-            margin-right: 5px;
-            animation: blink 1s infinite; /* Add blink animation */
-        }
-    
-        /* Blink animation */
-        @keyframes blink {
-            0%, 50% {
-                opacity: 1; /* Fully visible */
-            }
-            51%, 100% {
-                opacity: 0; /* Hidden */
-            }
-        }
-        
-    
-    
-        /* Custom styles for carousel */
-        .carousel-item {
-            text-align: center;
-        }
-
-        .carousel-item .icon-box {
-            display: inline-block;
-            margin: 20px;
-        }
-
-        .carousel-item .icon-box i {
-            font-size: 100px; /* Large size for the icons */
-        }
-
-        .carousel-item .icon-box i.fa-users {
-            color: #007bff; /* Blue for Total Homelessness */
-        }
-
-        .carousel-item .icon-box i.fa-house-damage {
-            color: #dc3545; /* Red for Total Damage */
-        }
-
-        .carousel-item .icon-box i.fa-shield-alt {
-            color: #28a745; /* Green for Total Insured Damage */
-        }
-
-        .carousel-item .icon-box i.fa-building {
-            color: #ffc107; /* Yellow for Total Building Damage */
-        }
-
-        .carousel-item .icon-box i.fa-skull-crossbones {
-            color: #6c757d; /* Gray for Total Deaths */
-        }
-
-        .carousel-item .icon-box i.fa-user-injured {
-            color: #17a2b8; /* Teal for Total Injuries */
-        }
-
-        .carousel-item .icon-box i.fa-people-arrows {
-            color: #ff5733; /* Orange for Total Displacement */
-        }
-
-        .carousel-item .caption {
-            margin-top: 10px;
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        .carousel-item .image-container img {
-            width: 70%;
-            height: auto;
-            margin-top: 20px;
-        }
-
-        /* Styles for carousel controls */
-        .carousel-control-prev, .carousel-control-next {
-            width: 5%;
-        }
-
-        .carousel-control-prev-icon, .carousel-control-next-icon {
-            background-color: #000;
-            border-radius: 50%;
-            padding: 10px;
-        }
-    </style>
-
-
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paul Muñoz</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<!-- Navigation will be inserted here -->
+<div id="nav-placeholder"></div>
 
-    <div class="container mt-4">
-        <!-- Disclaimer Section at the beginning -->
-        <div class="disclaimer-section text-justified">
-            <h4><i class="fas fa-exclamation-triangle"></i> Data quality disclaimer</h4>
-            <p>
-                The Wikimpacts project is an ongoing initiative, and data is constantly being updated. The data is provided "as is" without guarantees of accuracy or completeness. Users should be aware that it may contain errors or omissions and interpret it cautiously. The project team assumes no responsibility for any risks or losses from the use of this data.
-            </p>
+<!-- Hero Section -->
+<header class="hero">
+    <div class="hero-content">
+        <img src="images/profile_pic1.jpg" alt="Paul Muñoz" class="profile-pic">
+        <h1>Paul Muñoz</h1>
+        <div class="description-icons-box">
+            <!-- <p class="description-text">AI for Water & Climate Science | Hydrological Forecasting Researcher</p> -->
+            <div class="social-links">
+                <!-- LinkedIn Icon -->
+                <a href="https://www.linkedin.com/in/paul-mu%C3%B1oz-424432225/" target="_blank" title="LinkedIn">
+                    <img src="images/linkedin-logo.jpg" alt="LinkedIn" class="social-icon">
+                </a>
+                <!-- X (Twitter) Icon -->
+                <a href="https://x.com/paulmunozpauta" target="_blank" title="X (Twitter)">
+                    <img src="images/x-logo.png" alt="X" class="social-icon">
+                </a>
+                <!-- ResearchGate Icon -->
+                <a href="https://www.researchgate.net/profile/Paul-Munoz-2" target="_blank" title="ResearchGate">
+                    <img src="images/researchgate-logo.png" alt="ResearchGate" class="social-icon">
+                </a>
+                <!-- GitHub Icon -->
+                <a href="https://github.com/paulmunozpauta" target="_blank" title="GitHub">
+                    <img src="images/github-logo.png" alt="GitHub" class="social-icon">
+                </a>
+                <!-- ORCID Icon -->
+                <a href="https://orcid.org/0000-0002-8000-8840" target="_blank" title="ORCID">
+                    <img src="images/orcid-logo.png" alt="ORCID" class="social-icon">
+                </a>
+            </div>
         </div>
     </div>
+</header>
 
 
 
-    <div class="container">
 
-        <div class="main-content">
-            <h1>DIGIWATER CUBA</h1>
-            <p>Building Resilient Water Futures in the Global South through Digital Tools and Citizen Engagement </p>
-            <div class="buttons mt-4">
-                <a href="{% if session.get('user_id') %}{{ url_for('search') }}{% else %}{{ url_for('login') }}{% endif %}" 
-                   class="btn btn-primary"
-                   {% if not session.get('user_id') %}data-toggle="tooltip" title="Login to access"{% endif %}>
-                    Explore the Database
-                </a>
-                <a href="{% if session.get('user_id') %}{{ url_for('visualization') }}{% else %}{{ url_for('login') }}{% endif %}" 
-                   class="btn btn-primary"
-                   {% if not session.get('user_id') %}data-toggle="tooltip" title="Login to access"{% endif %}>
-                    Visualization Tool
-                </a>
-            </div>            
-                    
-                    
-                    
-            
-            
-        </div>
+    <!-- About Section -->
+    <section id="about" class="section">
+        <p>
+            👋! I’m a hydrology and AI researcher developing tools and models for 
+            <strong>hydrological forecasting</strong> and <strong>climate applications</strong>. 
+            My work bridges advanced artificial intelligence,  remote sensing, and applied science 
+            to solve real-world water challenges.
+        </p>
 
-        <!-- Explanatory section -->
-        <div class="explanatory-section mt-5">
-            <h2 class="text-center">More than 3,368 Wikipedia articles processed, encompassing 2,928 events from 1034 to 2024</h2>
-
-            <hr class="my-4">
-            <p class="text-justified">
-                text.       
-            </p>
-            <p class="text-justified">
-                text.       
-            </p>
-            <p class="text-justified">
-                text.       
-            </p>
-            <p class="text-justified">
-                text.       
-            </p>
-        </div>
-
-        <!-- Carousel Title and Explanatory Text -->
-        <div class="carousel-explanatory text-center mt-5">
-            <h2>DIGIWATER in numbers</h2>
-            <p>text</p>
-        </div>
-
-        <!-- Carousel section -->
-        <div id="impactCarousel" class="carousel slide mt-4" data-ride="carousel">
-            <div class="carousel-inner">
-                <!-- Total Homelessness -->
-                <div class="carousel-item active">
-                    <div class="icon-box">
-                        <i class="fas fa-users"></i> <!-- Icon representing homelessness -->
-                        <p class="caption">Total Homelessness</p>
-                    </div>
-                    <div class="image-container">
-                        <img src="{{ url_for('static', filename='homelessness_image.jpg') }}" alt="Homelessness impact image" class="img-fluid">
-                        <p class="caption">Total Homelessness</p>
-                    </div>
-                </div>
-                
-                <!-- Total Damage -->
-                <div class="carousel-item">
-                    <div class="icon-box">
-                        <i class="fas fa-house-damage"></i> <!-- Icon representing total damage -->
-                        <p class="caption">Total Damage</p>
-                    </div>
-                    <div class="image-container">
-                        <img src="{{ url_for('static', filename='total_damage_image.jpg') }}" alt="Total damage impact image" class="img-fluid">
-                        <p class="caption">Total Damage</p>
-                    </div>
-                </div>
-        
-                <!-- Total Insured Damage -->
-                <div class="carousel-item">
-                    <div class="icon-box">
-                        <i class="fas fa-shield-alt"></i> <!-- Icon representing insured damage -->
-                        <p class="caption">Total Insured Damage</p>
-                    </div>
-                    <div class="image-container">
-                        <img src="{{ url_for('static', filename='insured_damage_image.jpg') }}" alt="Insured damage impact image" class="img-fluid">
-                        <p class="caption">Total Insured Damage</p>
-                    </div>
-                </div>
-        
-                <!-- Total Building Damage -->
-                <div class="carousel-item">
-                    <div class="icon-box">
-                        <i class="fas fa-building"></i> <!-- Icon representing building damage -->
-                        <p class="caption">Total Building Damage</p>
-                    </div>
-                    <div class="image-container">
-                        <img src="{{ url_for('static', filename='building_damage_image.jpg') }}" alt="Building damage impact image" class="img-fluid">
-                        <p class="caption">Total Building Damage</p>
-                    </div>
-                </div>
-
-                <!-- Total Deaths -->
-                <div class="carousel-item">
-                    <div class="icon-box">
-                        <i class="fas fa-skull-crossbones"></i> <!-- Icon representing total deaths -->
-                        <p class="caption">Total Deaths</p>
-                    </div>
-                    <div class="image-container">
-                        <img src="{{ url_for('static', filename='total_deaths_image.jpg') }}" alt="Total deaths impact image" class="img-fluid">
-                        <p class="caption">Total Deaths</p>
-                    </div>
-                </div>
-
-                <!-- Total Injuries -->
-                <div class="carousel-item">
-                    <div class="icon-box">
-                        <i class="fas fa-user-injured"></i> <!-- Icon representing total injuries -->
-                        <p class="caption">Total Injuries</p>
-                    </div>
-                    <div class="image-container">
-                        <img src="{{ url_for('static', filename='total_injuries_image.jpg') }}" alt="Total injuries impact image" class="img-fluid">
-                        <p class="caption">Total Injuries</p>
-                    </div>
-                </div>
-
-                <!-- Total Displacement -->
-                <div class="carousel-item">
-                    <div class="icon-box">
-                        <i class="fas fa-people-arrows"></i> <!-- Icon representing total displacement -->
-                        <p class="caption">Total Displacement</p>
-                    </div>
-                    <div class="image-container">
-                        <img src="{{ url_for('static', filename='total_displacement_image.jpg') }}" alt="Total displacement impact image" class="img-fluid">
-                        <p class="caption">Total Displacement</p>
-                    </div>
-                </div>
-
-            </div>
-            <!-- Controls -->
-            <a class="carousel-control-prev" href="#impactCarousel" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#impactCarousel" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-
-        <!-- Image with descriptive text -->
-        <div class="row mt-5">
-            <!-- Text content with 40% width -->
-            <div class="col-md-4">
-                <h4 class="text-muted">Multi-scale focus</h4>
-                <h5>The Wikimpacts database accounts for climate impact records ranging from local and national to regional and global scales.</h5>
-                <ul>
-                    <li>Most impacted countries</li>
-                    <li>Number of fatalities</li>
-                    <li>Predominant climate impacts</li>
-                    <li>Trends and many more...</li>
-                </ul>
-            </div>
-        
-            <!-- Image content with 60% width -->
-            <div class="col-md-8">
-                <div class="img-container">
-                    <img src="{{ url_for('static', filename='event_countries.svg') }}" alt="Flood occurrence map" title="Flood Occurrence Map" class="img-fluid cropped-image">
-                </div>
-            </div>
-            
-        </div>
+<!-- Current and Past Positions Section -->
+<section id="positions" class="section">
+    <h2 class="section-title">Current and Past Positions</h2>
+    <ul class="positions-list">
+        <li>
+            <strong>May 2024 - Present</strong>: Postdoctoral researcher at the 
+            <a href="https://hydr.vub.be/people/Paul.munoz" target="_blank">Department of Water and Climate (HYDR)</a> at the Vrije Universiteit Brussel, Belgium.
+        </li>
+        <li>
+            <strong>2023 - 2024</strong>: External Consultant at 
+            <strong>Food and Agriculture Organization-FAO (United Nations)</strong>. Specialist in the evaluation of drought impacts on agricultural production and food security.
+        </li>
+        <li>
+            <strong>Oct 2018 - April 2024</strong>: Post- and doctoral researcher at 
+            <a href="https://www2.ucuenca.edu.ec/idrhica/en/staff/researchers/paul-munoz/" target="_blank">
+                Department of Water Resources and Environmental Sciences
+            </a> at Universidad de Cuenca.
+        </li>
+    </ul>
+</section>
+<!-- Education Section -->
+<section id="education" class="section">
+    <h2 class="section-title">Education</h2>
+    <ul class="education-list">
+        <li>
+            <strong> 2019 –  2023</strong>: Ph.D. in Water Resources <br>
+            <em>University of Cuenca, Cuenca, Ecuador</em><br>
+            Thesis: Towards the improvement of machine learning peak runoff forecasting by exploiting ground- and satellite-based precipitation data: A feature engineering approach.
+        </li>
+        <li>
+            <strong> 2016 –  2018</strong>: MSc. in Water Resources Engineering <br>
+            <em>KU Leuven, Leuven, Belgium</em><br>
+            Thesis: Flash-flood forecasting in an Andean mountain catchment—development of a step-wise methodology based on the random forest algorithm.
+        </li>
+        <li>
+            <strong> 2009 –  2015</strong>: Bachelor’s in Civil Engineering <br>
+            <em>University of Cuenca, Cuenca, Ecuador</em><br>
+            Thesis: Effect of the resolution of tipping-bucket rain gauge and calculation method on rainfall intensities in an Andean mountain gradient.
+        </li>
+    </ul>
+</section>
 
 
-       
+<!-- Social Media Section -->
+<section id="social-posts" class="section">
+    <h2 class="section-title">Latest social media updates</h2>
+
+    <!-- LinkedIn Posts -->
+    <div id="linkedin-posts">
+
+        <!-- Post 1 -->
+        <iframe 
+            src="https://www.linkedin.com/embed/feed/update/urn:li:share:7339324750319550466" 
+            height="500" 
+            width="100%" 
+            frameborder="0" 
+            allowfullscreen 
+            title="LinkedIn Post 1">
+        </iframe>
+
+        <!-- Post 2 -->
+        <iframe 
+            src="https://www.linkedin.com/embed/feed/update/urn:li:share:7324427293227970561" 
+            height="500" 
+            width="100%" 
+            frameborder="0" 
+            allowfullscreen 
+            title="LinkedIn Post 2">
+        </iframe>
+
+        <!-- Post 3 -->
+        <iframe 
+            src="https://www.linkedin.com/embed/feed/update/urn:li:share:7306199957672239105" 
+            height="500" 
+            width="100%" 
+            frameborder="0" 
+            allowfullscreen 
+            title="LinkedIn Post 3">
+        </iframe>
     </div>
 
-      
-{% endblock %}
+    <!-- X (Twitter) Posts -->
+    <div id="x-posts">
+        <h3>X (Twitter) Posts</h3>
+        <ul id="x-posts-list">
+            <!-- Tweets will be dynamically inserted here -->
+        </ul>
+    </div>
+</section>
+
+<!-- CV Section -->
+<section id="cv" class="section">
+    <h2 class="section-title">Download my CV</h2>
+    <div class="center-link">
+        <a href="CV/CV_PMunoz_Oct24.pdf" download>Last Updated: October 2024</a>
+    </div>
+</section>
+
+    <!-- Footer will be inserted here -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        fetch('components.html')
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("nav-placeholder").innerHTML = 
+                    new DOMParser().parseFromString(data, "text/html")
+                    .getElementById("shared-nav").innerHTML;
+
+                document.getElementById("footer-placeholder").innerHTML = 
+                    new DOMParser().parseFromString(data, "text/html")
+                    .getElementById("shared-footer").innerHTML;
+            });
+    </script>
+
+    <!-- JavaScript to Load X Posts -->
+    <script>
+        // Fetch and display X posts
+        fetch("x_posts.json")
+            .then(response => response.json())
+            .then(data => {
+                const postsList = document.getElementById("x-posts-list");
+                data.data.forEach(post => {
+                    const listItem = document.createElement("li");
+                    listItem.textContent = post.text;
+                    postsList.appendChild(listItem);
+                });
+            })
+            .catch(error => console.error("Error fetching X posts:", error));
+    </script>
+</body>
+</html>

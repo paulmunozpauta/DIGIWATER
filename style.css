@@ -178,7 +178,9 @@ footer p {
   display: block;
   margin-top: 10px;
 }
-
+main, .section {
+  margin-top: 20px;
+}
 /* Links */
 a {
   color: #0073e6;

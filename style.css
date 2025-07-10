@@ -116,20 +116,21 @@ footer p {
     margin: 0;
 }
 
-..team-grid {
+.team-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 20px;
+  justify-content: center;
 }
 
 .team-member {
-  flex: 0 1 calc(50% - 20px); /* 2 per row with spacing */
-  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 550px;
   background-color: #f9f9f9;
   padding: 15px;
   border-radius: 10px;
-  text-align: center;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
@@ -138,11 +139,61 @@ footer p {
   height: 100px;
   object-fit: cover;
   border-radius: 50%;
-  margin-bottom: 10px;
+  margin-right: 20px;
+}
+
+.team-member-content {
+  flex: 1;
+}
+
+.team-member-content h4 {
+  margin: 0;
+  font-weight: bold;
+}
+
+.team-member-content p {
+  margin: 5px 0;
 }
 
 .university-logo {
-  height: 40px;
+  height: 30px;
+  margin-top: 8px;
+}
+.country-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.flag-icon {
+  height: 30px;
+}
+
+.team-member {
+  display: flex;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.profile-pic {
+  height: 80px;
+  width: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.team-member-content {
+  flex: 1;
+}
+
+.university-logo {
+  height: 30px;
   margin-top: 10px;
 }
 

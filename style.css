@@ -143,10 +143,7 @@ footer p {
   flex: 1;
 }}
 
-.team-member-content h4 {
-  margin: 0;
-  font-weight: bold;
-}
+
 
 .team-member-content p {
   margin: 5px 0;
@@ -157,12 +154,15 @@ footer p {
   margin-top: 10px;
 }
 .country-header {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
+  gap: 15px;
+  margin-top: 40px;
 }
-
+.country-header .flag {
+  height: 40px;
+}
 .flag-icon {
   height: 30px;
 }
@@ -188,7 +188,9 @@ footer p {
 .team-member-content {
   flex: 1;
 }
-
+.team-member-content h4 {
+  margin: 0;
+}
 .university-logo {
   height: 35px;
   width: auto;

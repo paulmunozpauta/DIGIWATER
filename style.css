@@ -25,7 +25,7 @@ header p {
 /* Hero Section */
 
 .hero {
-  background-image: url("images/background_image.jpg");  /* adjust path if needed */
+  background-image: url("images/background.jpg");  /* adjust path if needed */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

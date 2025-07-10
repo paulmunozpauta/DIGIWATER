@@ -32,7 +32,7 @@
     In addition, two training courses targeting Cuban early career scientists and staff will focus on SWAT modelling and Digitisation and AI for water applications. These activities promote knowledge exchange, research decolonisation, and collaborative research to build resilient water futures in the Global South through digital tools and citizen engagement—key priorities in the VLIR-UOS country reference frameworks for Cuba, Bolivia, Ecuador, and Peru.
   </p>
   <p style="text-align: justify;">
-    DIGIWATER also aligns with the UNESCO Intergovernmental Hydrological Programme (IHP) and the Chair on Open Water Science and Education, hosted at VUB and chaired by Prof. Ann Van Griensven, which promotes open science through open data, IoT, and online education. A short video will document highlights from the activities. All outputs will be shared via the project website and VUB channels to boost VUB visibility.
+    DIGIWATER also aligns with the UNESCO Intergovernmental Hydrological Programme (IHP) and the Chair on Open Water Science and Education, hosted at VUB and chaired by Prof. Ann Van Griensven, which promotes open science through open data, IoT, and online education.
   </p>
 </section>
 
@@ -41,36 +41,28 @@
 <!-- Footer will be inserted here -->
 <div id="footer-placeholder"></div>
 
-
-
-<!-- Components auto-loaded -->
 <script>
-async function loadComponents() {
+  async function loadComponents() {
     const res = await fetch('components.html');
     const text = await res.text();
 
     const tempDiv = document.createElement('div');
     tempDiv.innerHTML = text;
 
-    const logoBar = tempDiv.querySelector('#logo-bar');
-    if (logoBar) {
-    document.body.insertBefore(logoBar, document.body.firstChild);
-    }
+    // Insert logo bar at the top of the body
+    document.body.insertBefore(tempDiv.querySelector('#logo-bar'), document.body.firstChild);
 
-    const nav = tempDiv.querySelector('#shared-nav');
-    if (nav) {
-    const main = document.querySelector('main');
-    document.body.insertBefore(nav, main || document.body.firstChild);
-    }
+    // Insert nav bar right after logo bar
+    const logoBar = document.querySelector('#logo-bar');
+    document.body.insertBefore(tempDiv.querySelector('#shared-nav'), logoBar.nextSibling);
 
-    const footer = tempDiv.querySelector('#shared-footer');
-    if (footer) {
-    document.body.appendChild(footer);
-    }
-}
+    // Append footer at the end of the body
+    document.body.appendChild(tempDiv.querySelector('#shared-footer'));
+  }
 
-window.addEventListener('DOMContentLoaded', loadComponents);
+  window.addEventListener('DOMContentLoaded', loadComponents);
 </script>
+
 
 </body>
 </html>

@@ -120,12 +120,12 @@ footer p {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .team-member {
-  flex: 0 0 48%; /* two per row with space between */
-  background: #f9f9f9;
+  flex: 0 1 45%;  /* allows 2 per row with space between */
+  background-color: #f9f9f9;
   padding: 15px;
   border-radius: 8px;
   text-align: center;
@@ -189,6 +189,11 @@ ul li {
     display: block;
     font-style: italic;
 }
+
+.section p, .section ul {
+  text-align: justify;
+}
+
 
 @media screen and (max-width: 768px) {
   .text-overlay {

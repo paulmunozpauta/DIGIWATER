@@ -7,36 +7,35 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Navigation will be inserted here -->
-    <div id="nav-placeholder"></div>
+<!-- Navigation will be inserted here -->
+<div id="nav-placeholder"></div>
 
 
-    <!-- Hero Section -->
-    <header class="hero">
-        <h1>Team</h1>
-    </header>
+<div class="image-banner hero-small" style="background-image: url('images/team_banner.jpg');">
+  <div class="text-overlay">Team</div>
+</div>
 
 
-    <main>
-        
-    </main>
+<main>
+    
+</main>
 
-    <!-- Footer will be inserted here -->
-    <div id="footer-placeholder"></div>
+<!-- Footer will be inserted here -->
+<div id="footer-placeholder"></div>
 
 
-    <script>
-        fetch('components.html')
-            .then(res => res.text())
-            .then(data => {
-                document.getElementById("nav-placeholder").innerHTML = 
-                    new DOMParser().parseFromString(data, "text/html")
-                    .getElementById("shared-nav").innerHTML;
+<script>
+    fetch('components.html')
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById("nav-placeholder").innerHTML = 
+                new DOMParser().parseFromString(data, "text/html")
+                .getElementById("shared-nav").innerHTML;
 
-                document.getElementById("footer-placeholder").innerHTML = 
-                    new DOMParser().parseFromString(data, "text/html")
-                    .getElementById("shared-footer").innerHTML;
-            });
-    </script>
+            document.getElementById("footer-placeholder").innerHTML = 
+                new DOMParser().parseFromString(data, "text/html")
+                .getElementById("shared-footer").innerHTML;
+        });
+</script>
 </body>
 </html>

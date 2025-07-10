@@ -208,3 +208,9 @@ ul li {
     flex: 0 0 100%;
   }
 }
+
+@media (max-width: 768px) {
+  .team-member {
+    flex: 0 1 100%;
+  }
+}

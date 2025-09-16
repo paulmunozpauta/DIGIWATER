@@ -308,3 +308,43 @@ ul li {
   line-height: 1.5;      /* more readable */
   margin-top: 0.5rem;    /* space above */
 }
+
+
+/* section headings */
+.section-header {
+  margin: 2.5rem 0 1rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.5rem;
+}
+.section-header h2 {
+  margin: 0 0 0.25rem;
+  font-size: 1.6rem;
+}
+.section-subtitle {
+  margin: 0;
+  color: #666;
+  font-size: 0.95rem;
+}
+/* each month’s gallery */
+.gallery-month {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* every picture fills the section width */
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px; /* optional */
+}
+
+.gallery-item figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  color: #444;
+}
+.gallery-item h3 {
+  margin: 0 0 0.3rem;
+}

@@ -294,7 +294,6 @@ ul li {
   color: #444;
 }
 
-/* add a small custom arrow */
 .talk > summary::after {
   content: "▸";
   margin-left: 0.5rem;
@@ -302,4 +301,10 @@ ul li {
 }
 .talk[open] > summary::after {
   transform: rotate(90deg);
+}
+
+.abstract {
+  text-align: justify;
+  line-height: 1.5;      /* more readable */
+  margin-top: 0.5rem;    /* space above */
 }
